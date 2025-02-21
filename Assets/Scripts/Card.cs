@@ -18,7 +18,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, IP
     public void OnPointerEnter(PointerEventData eventData)
     {
         EnableHighlight(true);
-        level.SetLastHoveredTarget(this);
+        level.LastHoveredTargetContainer.SetLastHoveredTarget(this);
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -31,8 +31,14 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, IP
         print("Highlighted is " + value);
     }
 
-    private void Select()
+    public void Select()
     {
         print("Selected");
+        level.PlayerInput.SetSelectedCard(this);
+    }
+
+    public void Unselect()
+    {
+        level.PlayerInput.RemoveSelectedCard();
     }
 }

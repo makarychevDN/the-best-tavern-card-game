@@ -12,6 +12,6 @@ public class CardSlot : MonoBehaviour, IPointerEnterHandler
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        level.SetLastHoveredTarget(this);
+        level.LastHoveredTargetContainer.SetLastHoveredTarget(this);
     }
 }
