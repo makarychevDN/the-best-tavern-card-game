@@ -24,6 +24,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, IP
     public void OnPointerExit(PointerEventData eventData)
     {
         EnableHighlight(false);
+        level.LastHoveredTargetContainer.RemoveLastHoveredTarget();
     }
 
     private void EnableHighlight(bool value)
@@ -40,5 +41,11 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, IP
     public void Unselect()
     {
         level.PlayerInput.RemoveSelectedCard();
+    }
+
+    public void Move(CardSlot targetCardSlot)
+    {
+        transform.position = targetCardSlot.transform.position;
+        targetCardSlot.SetCard(this);
     }
 }

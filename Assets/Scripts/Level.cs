@@ -13,6 +13,7 @@ public class Level : MonoBehaviour
 
     private void Awake()
     {
+        playerInput.Init(this);
         cardSlots.ForEach(slot => slot.Init(this));
         cards.ForEach(card => card.Init(this));
     }
