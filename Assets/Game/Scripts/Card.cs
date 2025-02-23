@@ -59,7 +59,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         await Task.Delay((int)(movementTime * 1000));
 
         transform.position = targetCardSlot.transform.position;
-        targetCardSlot.SetCard(this);
         cardSlot = targetCardSlot;
+        targetCardSlot.SetCard(this);
     }
 }
