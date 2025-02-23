@@ -3020,6 +3020,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedCard: {fileID: 0}
   targetSelectorArrow: {fileID: 1240143273}
+  primaryButton: {fileID: 1120369429361536294, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  secondaryButton: {fileID: 7128829717234066903, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
 --- !u!1 &1743654970
 GameObject:
   m_ObjectHideFlags: 0

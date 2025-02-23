@@ -5,12 +5,12 @@ using UnityEngine;
 public class Level : MonoBehaviour
 {
     [SerializeField] private LastHoveredTargetContainer lastHoveredTargetContainer;
-    [SerializeField] private PlayerInput playerInput;
+    [SerializeField] private PlayerActionsManager playerInput;
     private List<CardSlot> cardSlots;
     private List<Card> cards;
 
     public LastHoveredTargetContainer LastHoveredTargetContainer => lastHoveredTargetContainer;
-    public PlayerInput PlayerInput => playerInput;
+    public PlayerActionsManager PlayerInput => playerInput;
 
     private void Awake()
     {

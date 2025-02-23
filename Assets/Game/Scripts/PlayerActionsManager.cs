@@ -1,10 +1,25 @@
+using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class PlayerInput: MonoBehaviour
+public class PlayerActionsManager: MonoBehaviour
 {
     [SerializeField] private Card selectedCard;
     [SerializeField] private GameObject targetSelectorArrow;
+    [SerializeField] private InputActionReference primaryButton;
+    [SerializeField] private InputActionReference secondaryButton;
     private Level level;
+
+    private void Awake()
+    {
+        primaryButton.action.started += HandlePrimaryButtonInput;
+        secondaryButton.action.started += HandleSecondaryButtonInput;
+    }
+
+    public void Update()
+    {
+        DrawArrow();
+    }
 
     public void Init(Level level)
     {
@@ -22,39 +37,25 @@ public class PlayerInput: MonoBehaviour
         SetSelectedCard(null);
     }
 
-    public void Update()
+    private void HandlePrimaryButtonInput(InputAction.CallbackContext obj)
     {
-        DrawArrow();
-        HandleSecondaryMouseButtonInput();
-        HandleMainMouseButtonInput();
-    }
-
-    private void HandleMainMouseButtonInput()
-    {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if(selectedCard == null)
         {
-            if(selectedCard == null)
-            {
-                selectedCard = level.LastHoveredTargetContainer.LastHoveredTarget as Card;
-                return;
-            }
-
-            var cardSlot = level.LastHoveredTargetContainer.LastHoveredTarget as CardSlot;
-            if (cardSlot != null)
-            {
-                selectedCard.Move(cardSlot);
-                RemoveSelectedCard();
-            }
-        }
-    }
-
-    private void HandleSecondaryMouseButtonInput()
-    {
-        if (Input.GetKeyDown(KeyCode.Mouse1))
-        {
-            RemoveSelectedCard();
+            selectedCard = level.LastHoveredTargetContainer.LastHoveredTarget as Card;
             return;
         }
+
+        var cardSlot = level.LastHoveredTargetContainer.LastHoveredTarget as CardSlot;
+        if (cardSlot != null)
+        {
+            selectedCard.Move(cardSlot);
+            RemoveSelectedCard();
+        }
+    }
+
+    private void HandleSecondaryButtonInput(InputAction.CallbackContext obj)
+    {
+        RemoveSelectedCard();
     }
 
     private void DrawArrow()
