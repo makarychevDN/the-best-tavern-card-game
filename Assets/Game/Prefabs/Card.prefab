@@ -62,6 +62,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlight: {fileID: 2359432491436323420}
+  cardSlot: {fileID: 0}
+  movementTime: 0.15
 --- !u!1 &1086252801633337566
 GameObject:
   m_ObjectHideFlags: 0

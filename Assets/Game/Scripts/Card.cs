@@ -7,6 +7,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private GameObject highlight;
     [SerializeField] private CardSlot cardSlot;
+    [SerializeField] private float movementTime;
     private Level level;
 
     public void Init(Level level)
@@ -50,9 +51,9 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             cardSlot = null;
         }
 
-        transform.DOMove(targetCardSlot.transform.position, 0.15f).SetEase(Ease.InQuad);
-        transform.DOScale(targetCardSlot.transform.localScale, 0.15f).SetEase(Ease.InQuad);
-        await Task.Delay(150);
+        transform.DOMove(targetCardSlot.transform.position, movementTime).SetEase(Ease.InQuad);
+        transform.DOScale(targetCardSlot.transform.localScale, movementTime).SetEase(Ease.InQuad);
+        await Task.Delay((int)(movementTime * 1000));
         transform.position = targetCardSlot.transform.position;
         targetCardSlot.SetCard(this);
         cardSlot = targetCardSlot;
