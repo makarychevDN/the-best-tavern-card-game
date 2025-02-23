@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Card : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, IPointerExitHandler
+public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private GameObject highlight;
     private Level level;
@@ -12,8 +12,6 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, IP
     {
         this.level = level;
     }
-
-    public void OnPointerDown(PointerEventData eventData) => Select();
 
     public void OnPointerEnter(PointerEventData eventData) => Hover();
 

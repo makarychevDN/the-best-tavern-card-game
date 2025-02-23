@@ -31,17 +31,15 @@ public class PlayerActionsManager: MonoBehaviour
         selectedCard = card;
     }
 
-    public void RemoveSelectedCard()
-    {
-        selectedCard.Unselect();
-        SetSelectedCard(null);
-    }
-
     private void HandlePrimaryButtonInput(InputAction.CallbackContext obj)
     {
         if(selectedCard == null)
         {
             selectedCard = level.LastHoveredTargetContainer.LastHoveredTarget as Card;
+
+            if(selectedCard != null)
+                selectedCard.Select();
+
             return;
         }
 
@@ -49,13 +47,17 @@ public class PlayerActionsManager: MonoBehaviour
         if (cardSlot != null)
         {
             selectedCard.Move(cardSlot);
-            RemoveSelectedCard();
+            SetSelectedCard(null);
         }
     }
 
     private void HandleSecondaryButtonInput(InputAction.CallbackContext obj)
     {
-        RemoveSelectedCard();
+        if (selectedCard == null)
+            return;
+
+        selectedCard.Unselect();
+        SetSelectedCard(null);
     }
 
     private void DrawArrow()
