@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private GameObject highlight;
+    [SerializeField] private CardSlot cardSlot;
     private Level level;
 
     public void Init(Level level)
@@ -43,10 +44,17 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public async Task Move(CardSlot targetCardSlot)
     {
+        if (cardSlot != null)
+        {
+            cardSlot.SetCard(null);
+            cardSlot = null;
+        }
+
         transform.DOMove(targetCardSlot.transform.position, 0.15f).SetEase(Ease.InQuad);
         transform.DOScale(targetCardSlot.transform.localScale, 0.15f).SetEase(Ease.InQuad);
         await Task.Delay(150);
         transform.position = targetCardSlot.transform.position;
         targetCardSlot.SetCard(this);
+        cardSlot = targetCardSlot;
     }
 }
