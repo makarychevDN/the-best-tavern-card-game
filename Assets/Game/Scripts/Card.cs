@@ -54,6 +54,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         transform.DOMove(targetCardSlot.transform.position, movementTime).SetEase(Ease.InQuad);
         transform.DOScale(targetCardSlot.transform.localScale, movementTime).SetEase(Ease.InQuad);
         await Task.Delay((int)(movementTime * 1000));
+
         transform.position = targetCardSlot.transform.position;
         targetCardSlot.SetCard(this);
         cardSlot = targetCardSlot;
