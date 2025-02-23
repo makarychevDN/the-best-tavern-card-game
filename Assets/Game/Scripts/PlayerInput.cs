@@ -16,28 +16,29 @@ public class PlayerInput: MonoBehaviour
         selectedCard = card;
     }
 
-    public void RemoveSelectedCard() => SetSelectedCard(null);
+    public void RemoveSelectedCard()
+    {
+        selectedCard.Unselect();
+        SetSelectedCard(null);
+    }
 
     public void Update()
     {
-        if (selectedCard == null)
-        {
-            targetSelectorArrow.SetActive(false);
-            return;
-        }
+        DrawArrow();
+        HandleSecondaryMouseButtonInput();
+        HandleMainMouseButtonInput();
+    }
 
-        if (Input.GetKeyDown(KeyCode.Mouse1))
-        {
-            RemoveSelectedCard();
-            return;
-        }
-
-        print(selectedCard.gameObject.name);
-        targetSelectorArrow.SetActive(true);
-        PointArrowFromSelectedCardToMouse();
-
+    private void HandleMainMouseButtonInput()
+    {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
+            if(selectedCard == null)
+            {
+                selectedCard = level.LastHoveredTargetContainer.LastHoveredTarget as Card;
+                return;
+            }
+
             var cardSlot = level.LastHoveredTargetContainer.LastHoveredTarget as CardSlot;
             if (cardSlot != null)
             {
@@ -47,8 +48,22 @@ public class PlayerInput: MonoBehaviour
         }
     }
 
-    private void PointArrowFromSelectedCardToMouse()
+    private void HandleSecondaryMouseButtonInput()
     {
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            RemoveSelectedCard();
+            return;
+        }
+    }
+
+    private void DrawArrow()
+    {
+        targetSelectorArrow.SetActive(selectedCard != null);
+
+        if (selectedCard == null)
+            return;
+
         Vector3 targetPosition = Input.mousePosition;
         Vector3 objectPosition = selectedCard.transform.position;
 

@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 
 public class Card : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, IPointerExitHandler
 {
+    [SerializeField] private GameObject highlight;
     private Level level;
 
     public void Init(Level level)
@@ -12,38 +13,34 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, IP
         this.level = level;
     }
 
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        Select();
-    }
+    public void OnPointerDown(PointerEventData eventData) => Select();
 
-    public void OnPointerEnter(PointerEventData eventData)
+    public void OnPointerEnter(PointerEventData eventData) => Hover();
+
+    public void OnPointerExit(PointerEventData eventData) => Unhover();
+
+    private void EnableHighlight(bool value) => highlight.SetActive(value);
+
+    public void Hover()
     {
         EnableHighlight(true);
         level.LastHoveredTargetContainer.SetLastHoveredTarget(this);
     }
 
-    public void OnPointerExit(PointerEventData eventData)
+    public void Unhover()
     {
         EnableHighlight(false);
         level.LastHoveredTargetContainer.RemoveLastHoveredTarget();
     }
 
-    private void EnableHighlight(bool value)
-    {
-        print("Highlighted is " + value);
-    }
-
     public void Select()
     {
-        print("Selected");
-        level.PlayerInput.SetSelectedCard(this);
         transform.localScale = Vector3.one * 2f;
     }
 
     public void Unselect()
     {
-        level.PlayerInput.RemoveSelectedCard();
+        transform.localScale = Vector3.one;
     }
 
     public async Task Move(CardSlot targetCardSlot)
