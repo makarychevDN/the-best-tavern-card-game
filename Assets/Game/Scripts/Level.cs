@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Level : MonoBehaviour
 {
-    [SerializeField] private List<Card> cards;
     [SerializeField] private LastHoveredTargetContainer lastHoveredTargetContainer;
     [SerializeField] private PlayerInput playerInput;
     private List<CardSlot> cardSlots;
+    private List<Card> cards;
 
     public LastHoveredTargetContainer LastHoveredTargetContainer => lastHoveredTargetContainer;
     public PlayerInput PlayerInput => playerInput;
@@ -16,6 +16,7 @@ public class Level : MonoBehaviour
     {
         playerInput.Init(this);
         cardSlots = GetComponentsInChildren<CardSlot>().ToList();
+        cards = GetComponentsInChildren<Card>().ToList();
         cardSlots.ForEach(slot => slot.Init(this));
         cards.ForEach(card => card.Init(this));
     }
