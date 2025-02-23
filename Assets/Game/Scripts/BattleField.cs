@@ -1,13 +1,15 @@
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class BattleField : MonoBehaviour
 {
     [SerializeField] private CardSlot cardSlotPrefab;
+    [SerializeField] private RecipeCrafter cecipeCrafter;
+    [SerializeField] private Transform cardSlotsParent;
     [SerializeField] private int width;
     [SerializeField] private int height;
     private CardSlot[,] cardSlots;
+
+    public CardSlot[,] CardSlots => cardSlots;
 
     public void Init(Level level)
     {
@@ -16,9 +18,11 @@ public class BattleField : MonoBehaviour
         {
             for(int j = 0; j < height; j++)
             {
-                cardSlots[i, j] = Instantiate(cardSlotPrefab, transform);
+                cardSlots[i, j] = Instantiate(cardSlotPrefab, cardSlotsParent);
                 cardSlots[i, j].Init(level);
             }
         }
+
+        cecipeCrafter.Init(this);
     }
 }
