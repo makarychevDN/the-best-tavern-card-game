@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 public class CardSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
@@ -6,7 +7,15 @@ public class CardSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     [SerializeField] private Card card;
     private Level level;
 
-    public void SetCard(Card card) => this.card = card;
+    public UnityEvent OnFilled;
+
+    public void SetCard(Card card)
+    {
+        this.card = card;
+
+        if (card != null)
+            OnFilled.Invoke();
+    }
 
     public void Init(Level level)
     {

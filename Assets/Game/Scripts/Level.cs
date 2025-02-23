@@ -6,7 +6,7 @@ public class Level : MonoBehaviour
 {
     [SerializeField] private LastHoveredTargetContainer lastHoveredTargetContainer;
     [SerializeField] private PlayerActionsManager playerInput;
-    private List<CardSlot> cardSlots;
+    [SerializeField] private BattleField battleField;
     private List<Card> cards;
 
     public LastHoveredTargetContainer LastHoveredTargetContainer => lastHoveredTargetContainer;
@@ -14,10 +14,9 @@ public class Level : MonoBehaviour
 
     private void Awake()
     {
+        battleField.Init(this);
         playerInput.Init(this);
-        cardSlots = GetComponentsInChildren<CardSlot>().ToList();
         cards = GetComponentsInChildren<Card>().ToList();
-        cardSlots.ForEach(slot => slot.Init(this));
         cards.ForEach(card => card.Init(this));
     }
 }

@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 2560
     height: 1349
   m_ShowMode: 4
-  m_Title: Game
+  m_Title: Console
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -963,9 +963,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: 806.0095, y: 523.8598, z: -1.8746156}
+    m_Target: {x: 918.8713, y: 511.7247, z: -2.8062553}
     speed: 2
-    m_Value: {x: 806.0095, y: 523.8598, z: -1.8746156}
+    m_Value: {x: 918.8713, y: 511.7247, z: -2.8062553}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1015,9 +1015,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 258.17108
+    m_Target: 351.33517
     speed: 2
-    m_Value: 258.17108
+    m_Value: 351.33517
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -1164,7 +1164,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 0cfbffff0caf00008aaf0000
+      m_ExpandedIDs: 0cfbffff04af00007aaf0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1421,7 +1421,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Game/Graphics
+    - Assets/Game/Scripts
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -1431,16 +1431,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Game/Graphics
+  - Assets/Game/Scripts
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\Unity Projects\the-best-tavern-card-game
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 28bb0000
-    m_LastClickedID: 47912
-    m_ExpandedIDs: 00000000e8b10000
+    m_SelectedIDs: 1eb60000
+    m_LastClickedID: 46622
+    m_ExpandedIDs: 00000000f4b10000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1469,7 +1469,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000e8b10000
+    m_ExpandedIDs: 00000000f4b10000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1495,8 +1495,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 62af0000
-    m_LastClickedInstanceID: 44898
+    m_SelectedInstanceIDs: a6af0000
+    m_LastClickedInstanceID: 44966
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: bc7b00005e76000030760000fa120100ec5b01006ccf0000620b0200680b02003c8c0000303103008c99000078790000a6790000a8780000eedd0200387900006e490100e0d500005a75000020f30100421f0100d8750000fc750000906607006c770000183701008e930a005273010018440100c85204006ee91d0060770000164403006a8f010010440100c0440100aebd01008a630000ee1001004064000038640000
     m_RenameOverlay:
@@ -2655,4 +2655,4 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 44898
+  m_LastSelectedObjectID: 44966
