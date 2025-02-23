@@ -5,10 +5,13 @@ using UnityEngine.EventSystems;
 
 public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    [SerializeField] private CardItem cardItem;
     [SerializeField] private GameObject highlight;
     [SerializeField] private CardSlot cardSlot;
     [SerializeField] private float movementTime;
     private Level level;
+
+    public CardItem CardItem => cardItem;
 
     public void Init(Level level)
     {

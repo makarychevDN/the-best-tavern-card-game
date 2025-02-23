@@ -9,6 +9,8 @@ public class CardSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public UnityEvent OnFilled;
 
+    public Card Card => card;
+
     public void SetCard(Card card)
     {
         this.card = card;
