@@ -50,11 +50,9 @@ public class RecipeCrafter : MonoBehaviour
         {
             for (int j = 0; j < recipe.RecipeImage.height; j++)
             {
-                print("8");
                 var expectedItem = cardItemsByColor[recipe.RecipeImage.GetPixel(i, j)];
                 if (expectedItem != battleField.CardSlots[i + x, j + y].Card.CardItem)
                     return;
-                print("9");
             }
         }
 
