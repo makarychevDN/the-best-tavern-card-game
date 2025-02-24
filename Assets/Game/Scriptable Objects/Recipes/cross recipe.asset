@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 620b5d0c82c9ffb4fb1803a4d3c3212f, type: 3}
-  m_Name: Lemon Pie Recipe
+  m_Name: cross recipe
   m_EditorClassIdentifier: 
-  resultItem: {fileID: 11400000, guid: 54875f8b034d82348bd99f9feea57205, type: 2}
-  recipeImage: {fileID: 2800000, guid: 3ab70e9adcec26649acbf638c8b39ca8, type: 3}
+  resultItem: {fileID: 11400000, guid: 4699e338d0896af41a95a4a32acebe3a, type: 2}
+  recipeImage: {fileID: 2800000, guid: 1d92bcfb950837f488b171d53f6b9dec, type: 3}
