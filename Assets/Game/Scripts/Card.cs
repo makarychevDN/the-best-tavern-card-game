@@ -2,12 +2,14 @@ using DG.Tweening;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private CardItem cardItem;
     [SerializeField] private GameObject highlight;
     [SerializeField] private CardSlot cardSlot;
+    [SerializeField] private Image itemImage;
     [SerializeField] private float movementTime;
     private Level level;
 
@@ -16,12 +18,14 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public void Init(Level level)
     {
         this.level = level;
+        itemImage.sprite = cardItem.Image;
     }
 
     public void Init(Level level, CardItem cardItem)
     {
         this.level = level; 
         this.cardItem = cardItem;
+        itemImage.sprite = cardItem.Image;
     }
 
     public void OnPointerEnter(PointerEventData eventData) => Hover();

@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aee660c9f91d3241bee49d98e0b2b40, type: 3}
   m_Name: Dough
   m_EditorClassIdentifier: 
+  image: {fileID: 21300000, guid: 21e88583846fdcb49bcad995e77f6a64, type: 3}

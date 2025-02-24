@@ -61,8 +61,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cff9fe0c306ed00409aebf2e1c125b7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardItem: {fileID: 0}
   highlight: {fileID: 2359432491436323420}
   cardSlot: {fileID: 0}
+  itemImage: {fileID: 939686271992275515}
   movementTime: 0.15
 --- !u!1 &1086252801633337566
 GameObject:
