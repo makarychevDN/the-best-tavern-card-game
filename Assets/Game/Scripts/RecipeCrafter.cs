@@ -16,29 +16,25 @@ public class RecipeCrafter : MonoBehaviour
         this.battleField = battleField;
         foreach(var cardSlot in battleField.CardSlots)
         {
-            cardSlot.OnFilled.AddListener(TryToExecuteRecepies);
+            cardSlot.OnSlotFilled.AddListener(TryToExecuteRecepies);
         }
-        print(cardItemsByColor[recipies[0].RecipeImage.GetPixel(0, 0)]);
     }
 
-    private void TryToExecuteRecepies()
+    private void TryToExecuteRecepies(CardSlot targetSlot)
     {
-        int iterations = 0;
         foreach(var recipe in recipies)
         {
             for (int i = 0; i < battleField.CardSlots.GetLength(0); i++)
             {
                 for (int j = 0; j < battleField.CardSlots.GetLength(1); j++)
                 {
-                    iterations++;
-                    TryToExecuteRecepie(recipe, i, j);
+                    TryToExecuteRecepie(recipe, targetSlot, i, j);
                 }
             }
         }
-        print(iterations);
     }
 
-    private void TryToExecuteRecepie(Recipe recipe, int x, int y)
+    private void TryToExecuteRecepie(Recipe recipe, CardSlot targetSlot, int x, int y)
     {
         if (battleField.CardSlots.GetLength(0) - x < recipe.RecipeImage.width)
             return;
@@ -50,12 +46,16 @@ public class RecipeCrafter : MonoBehaviour
         {
             for (int j = 0; j < recipe.RecipeImage.height; j++)
             {
+                var card = battleField.CardSlots[i + x, j + y].Card;
                 var expectedItem = cardItemsByColor[recipe.RecipeImage.GetPixel(i, j)];
-                if (expectedItem != battleField.CardSlots[i + x, j + y].Card.CardItem)
+
+                if (card == null || expectedItem != battleField.CardSlots[i + x, j + y].Card.CardItem)
+                {
                     return;
+                }
             }
         }
 
-        print($"{recipe.name} is crafted successfully!");
+        print($"{recipe.name} is crafted successfully into {targetSlot.name}! The result is {recipe.ResultItem.name}");
     }
 }

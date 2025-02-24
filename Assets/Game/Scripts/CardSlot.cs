@@ -7,7 +7,7 @@ public class CardSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     [SerializeField] private Card card;
     private Level level;
 
-    public UnityEvent OnFilled;
+    public UnityEvent<CardSlot> OnSlotFilled;
 
     public Card Card => card;
 
@@ -16,7 +16,7 @@ public class CardSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         this.card = card;
 
         if (card != null)
-            OnFilled.Invoke();
+            OnSlotFilled.Invoke(this);
     }
 
     public void Init(Level level)

@@ -8,4 +8,6 @@ public class Recipe : ScriptableObject
     [SerializeField] private Texture2D recipeImage;
 
     public Texture2D RecipeImage => recipeImage;
+
+    public CardItem ResultItem => resultItem;
 }
