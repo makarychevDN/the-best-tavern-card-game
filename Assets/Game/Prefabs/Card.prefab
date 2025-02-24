@@ -68,9 +68,15 @@ MonoBehaviour:
   movementTime: 0.15
   highlight: {fileID: 2359432491436323420}
   itemImage: {fileID: 939686271992275515}
-  itemName: {fileID: 657164697583940765}
-  power: {fileID: 140136326798468440}
-  charges: {fileID: 7253202786630977838}
+  itemNameText: {fileID: 657164697583940765}
+  powerText: {fileID: 140136326798468440}
+  chargesText: {fileID: 7253202786630977838}
+  power: 0
+  charges: 0
+  spicy: 0
+  sour: 0
+  sweet: 0
+  fancy: 0
 --- !u!1 &1086252801633337566
 GameObject:
   m_ObjectHideFlags: 0
@@ -308,7 +314,7 @@ GameObject:
   - component: {fileID: 1117756533314638216}
   - component: {fileID: 657164697583940765}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

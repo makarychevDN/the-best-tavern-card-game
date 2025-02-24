@@ -13,9 +13,12 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     [Header("UI Refs")]
     [SerializeField] private GameObject highlight;
     [SerializeField] private Image itemImage;
-    [SerializeField] private TMP_Text itemName;
-    [SerializeField] private TMP_Text power;
-    [SerializeField] private TMP_Text charges;
+    [SerializeField] private TMP_Text itemNameText;
+    [SerializeField] private TMP_Text powerText;
+    [SerializeField] private TMP_Text chargesText;
+    [Header("Item Properties")]
+    [SerializeField] private int power;
+    [SerializeField] private int charges;
     private Level level;
 
     public CardItem CardItem => cardItem;
@@ -36,9 +39,12 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         this.cardItem = cardItem;
         itemImage.sprite = cardItem.Image;
-        itemName.text = cardItem.ItemName;
-        power.text = cardItem.Power.ToString();
-        charges.text = cardItem.Charges.ToString();
+        itemNameText.text = cardItem.ItemName;
+        powerText.text = cardItem.Power.ToString();
+        chargesText.text = cardItem.Charges.ToString();
+
+        power = cardItem.Power;
+        charges = cardItem.Charges;
     }
 
     public void OnPointerEnter(PointerEventData eventData) => Hover();
