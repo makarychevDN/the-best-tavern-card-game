@@ -13,3 +13,6 @@ MonoBehaviour:
   m_Name: Cross
   m_EditorClassIdentifier: 
   image: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  itemName: "\u041A\u0440\u0435\u0441\u0442"
+  power: 10
+  charges: 1
