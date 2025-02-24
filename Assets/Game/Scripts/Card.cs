@@ -18,6 +18,12 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         this.level = level;
     }
 
+    public void Init(Level level, CardItem cardItem)
+    {
+        this.level = level; 
+        this.cardItem = cardItem;
+    }
+
     public void OnPointerEnter(PointerEventData eventData) => Hover();
 
     public void OnPointerExit(PointerEventData eventData) => Unhover();
@@ -61,5 +67,19 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         transform.position = targetCardSlot.transform.position;
         cardSlot = targetCardSlot;
         targetCardSlot.SetCard(this);
+    }
+
+    public async Task Move(Vector3 position)
+    {
+        if (cardSlot != null)
+        {
+            cardSlot.SetCard(null);
+            cardSlot = null;
+        }
+
+        transform.DOMove(position, movementTime).SetEase(Ease.InQuad);
+        await Task.Delay((int)(movementTime * 1000));
+
+        transform.position = position;
     }
 }

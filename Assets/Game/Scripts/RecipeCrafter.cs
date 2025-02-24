@@ -5,7 +5,6 @@ using UnityEngine;
 public class RecipeCrafter : MonoBehaviour
 {
     [SerializeField] private List<Recipe> recipies;
-    [SerializeField] private CardItem lemon;
     private BattleField battleField;
 
     [SerializedDictionary("Color", "CardItem")]
@@ -42,6 +41,8 @@ public class RecipeCrafter : MonoBehaviour
         if (battleField.CardSlots.GetLength(1) - y < recipe.RecipeImage.height)
             return;
 
+        List<Card> cards = new List<Card>();
+
         for (int i = 0; i < recipe.RecipeImage.width; i++)
         {
             for (int j = 0; j < recipe.RecipeImage.height; j++)
@@ -56,9 +57,30 @@ public class RecipeCrafter : MonoBehaviour
                 {
                     return;
                 }
+
+                cards.Add(card);
             }
         }
 
+        ExecuteRecepe(cards, targetSlot, recipe);
+    }
+
+    private async void ExecuteRecepe(List<Card> involvedCards, CardSlot targetSlot, Recipe recipe)
+    {
         print($"{recipe.name} is crafted successfully into {targetSlot.name}! The result is {recipe.ResultItem.name}");
+
+        foreach (Card card in involvedCards)
+        {
+            await card.Move(targetSlot.transform.position);
+        }
+
+        while(involvedCards.Count > 0)
+        {
+            var removedCard = involvedCards[0];
+            involvedCards.Remove(removedCard);
+            Destroy(removedCard.gameObject);
+        }
+
+        battleField.SpawnCard(recipe.ResultItem, targetSlot);
     }
 }

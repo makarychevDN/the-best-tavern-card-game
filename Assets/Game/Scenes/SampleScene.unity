@@ -171,7 +171,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6e9b60feafd8e3147a19ca218365737e, type: 2}
   - {fileID: 11400000, guid: 5ac9914bd24e1ab44b265203bbc7b781, type: 2}
   - {fileID: 11400000, guid: 6f05c4bac11e9eb469bad56f73ad14c9, type: 2}
-  lemon: {fileID: 11400000, guid: 2700677394733de469281f8c45174ce5, type: 2}
   cardItemsByColor:
     _serializedList:
     - Key: {r: 0, g: 0, b: 0, a: 0}
@@ -1264,6 +1263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2eb2458447f4184fb93b8e70eec15e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardPrefab: {fileID: 4831155972395961157, guid: 8b1707b10dc0169489bc2ef113379330, type: 3}
   cardSlotPrefab: {fileID: 4341146166876576018, guid: 281d0d23b3934bc419a216d8c42f4d91, type: 3}
   cecipeCrafter: {fileID: 16504374}
   cardSlotsParent: {fileID: 379016048}
