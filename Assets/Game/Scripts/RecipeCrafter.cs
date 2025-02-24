@@ -46,6 +46,9 @@ public class RecipeCrafter : MonoBehaviour
         {
             for (int j = 0; j < recipe.RecipeImage.height; j++)
             {
+                if (recipe.RecipeImage.GetPixel(i, j).a == 0)
+                    continue;
+
                 var card = battleField.CardSlots[i + x, j + y].Card;
                 var expectedItem = cardItemsByColor[recipe.RecipeImage.GetPixel(i, j)];
 
