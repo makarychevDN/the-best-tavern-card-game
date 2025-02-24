@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 83a113554bd8bc94988d0141b10af540, type: 3}
-  m_Name: Lemon Pie
+  m_Name: lemon Pie
   m_EditorClassIdentifier: 
   image: {fileID: 0}
   itemName: "\u041B\u0438\u043C\u043E\u043D\u043D\u044B\u0439 \u043F\u0438\u0440\u043E\u0433"
