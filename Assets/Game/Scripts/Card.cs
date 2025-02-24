@@ -94,15 +94,16 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public async Task Move(Vector3 position)
     {
-        if (cardSlot != null)
-        {
-            cardSlot.SetCard(null);
-            cardSlot = null;
-        }
+        await transform.DOMove(position, movementTime).SetEase(Ease.InQuad).AsyncWaitForCompletion();
+    }
 
-        transform.DOMove(position, movementTime).SetEase(Ease.InQuad);
-        await Task.Delay((int)(movementTime * 1000));
+    public async Task Attack(Card targetCard)
+    {
+        await Move(targetCard.transform.position);
 
-        transform.position = position;
+        charges--;
+        targetCard.power -= power;
+
+        await Move(cardSlot.transform.position);
     }
 }

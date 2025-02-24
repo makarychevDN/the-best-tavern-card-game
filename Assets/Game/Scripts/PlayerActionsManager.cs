@@ -48,6 +48,15 @@ public class PlayerActionsManager: MonoBehaviour
         {
             selectedCard.Move(cardSlot);
             SetSelectedCard(null);
+            return;
+        }
+
+        var card = level.LastHoveredTargetContainer.LastHoveredTarget as Card;
+        if (card != null)
+        {
+            selectedCard.Attack(card);
+            SetSelectedCard(null);
+            return;
         }
     }
 
