@@ -168,7 +168,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recipies:
-  - {fileID: 11400000, guid: 5ac9914bd24e1ab44b265203bbc7b781, type: 2}
   - {fileID: 11400000, guid: 6e9b60feafd8e3147a19ca218365737e, type: 2}
   lemon: {fileID: 11400000, guid: 2700677394733de469281f8c45174ce5, type: 2}
   cardItemsByColor:
@@ -649,6 +648,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1365599397}
     m_Modifications:
+    - target: {fileID: 939686271992275515, guid: 8b1707b10dc0169489bc2ef113379330, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -4588854041495768185, guid: 21e88583846fdcb49bcad995e77f6a64, type: 3}
     - target: {fileID: 994070522793897964, guid: 8b1707b10dc0169489bc2ef113379330, type: 3}
       propertyPath: m_Name
       value: Card (1)
@@ -656,7 +659,7 @@ PrefabInstance:
     - target: {fileID: 4831155972395961157, guid: 8b1707b10dc0169489bc2ef113379330, type: 3}
       propertyPath: cardItem
       value: 
-      objectReference: {fileID: 11400000, guid: 2700677394733de469281f8c45174ce5, type: 2}
+      objectReference: {fileID: 11400000, guid: 74b13f9a288b9a8488ae1806ecd89427, type: 2}
     - target: {fileID: 7365951545153980450, guid: 8b1707b10dc0169489bc2ef113379330, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
