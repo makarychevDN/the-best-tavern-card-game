@@ -71,7 +71,7 @@ public class RecipeCrafter : MonoBehaviour
 
         foreach (Card card in involvedCards)
         {
-            await card.Move(targetSlot.transform.position);
+            await card.InteractAnimation(targetSlot.transform.position);
         }
 
         while(involvedCards.Count > 0)

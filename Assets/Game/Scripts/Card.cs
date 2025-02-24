@@ -92,18 +92,30 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         targetCardSlot.SetCard(this);
     }
 
-    public async Task Move(Vector3 position)
+    public async Task InteractAnimation(Vector3 position)
     {
+        Vector3 direction = position - transform.position;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+        transform.DORotate(new Vector3(0, 0, angle - 90), movementTime * 0.5f).SetEase(Ease.InQuad);
+        transform.DOScale(Vector3.one * 0.5f, movementTime).SetEase(Ease.InQuad);
+        await transform.DOMove(position, movementTime).SetEase(Ease.InQuad).AsyncWaitForCompletion();
+    }
+
+    public async Task MovementAnimation(Vector3 position)
+    {
+        transform.DORotate(new Vector3(0, 0, 0), movementTime);
+        transform.DOScale(Vector3.one, movementTime).SetEase(Ease.InQuad);
         await transform.DOMove(position, movementTime).SetEase(Ease.InQuad).AsyncWaitForCompletion();
     }
 
     public async Task Attack(Card targetCard)
     {
-        await Move(targetCard.transform.position);
+        await InteractAnimation(targetCard.transform.position);
 
         charges--;
         targetCard.power -= power;
 
-        await Move(cardSlot.transform.position);
+        await MovementAnimation(cardSlot.transform.position);
     }
 }
