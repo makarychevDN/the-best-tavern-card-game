@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class RecipeCrafter : MonoBehaviour
 {
-    [SerializeField] private List<Recipe> recipies;
+    [SerializeField] private List<Recipe> recipes;
     private BattleField battleField;
 
     [SerializedDictionary("Color", "CardItem")]
@@ -16,25 +16,25 @@ public class RecipeCrafter : MonoBehaviour
         this.battleField = battleField;
         foreach(var cardSlot in battleField.CardSlots)
         {
-            cardSlot.OnSlotFilled.AddListener(TryToExecuteRecepies);
+            cardSlot.OnSlotFilled.AddListener(TryToExecuteRecipes);
         }
     }
 
-    private void TryToExecuteRecepies(CardSlot targetSlot)
+    private void TryToExecuteRecipes(CardSlot targetSlot)
     {
-        foreach(var recipe in recipies)
+        foreach(var recipe in recipes)
         {
             for (int i = 0; i < battleField.CardSlots.GetLength(0); i++)
             {
                 for (int j = 0; j < battleField.CardSlots.GetLength(1); j++)
                 {
-                    TryToExecuteRecepie(recipe, targetSlot, i, j);
+                    TryToExecuteRecipe(recipe, targetSlot, i, j);
                 }
             }
         }
     }
 
-    private void TryToExecuteRecepie(Recipe recipe, CardSlot targetSlot, int x, int y)
+    private void TryToExecuteRecipe(Recipe recipe, CardSlot targetSlot, int x, int y)
     {
         if (battleField.CardSlots.GetLength(0) - x < recipe.RecipeImage.width)
             return;
@@ -63,10 +63,10 @@ public class RecipeCrafter : MonoBehaviour
             }
         }
 
-        ExecuteRecepe(cards, targetSlot, recipe);
+        ExecuteRecipe(cards, targetSlot, recipe);
     }
 
-    private async void ExecuteRecepe(List<Card> involvedCards, CardSlot targetSlot, Recipe recipe)
+    private async void ExecuteRecipe(List<Card> involvedCards, CardSlot targetSlot, Recipe recipe)
     {
         List<Task> animationTasks = new List<Task>();
         foreach (Card card in involvedCards)

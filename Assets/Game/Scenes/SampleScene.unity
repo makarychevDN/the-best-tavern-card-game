@@ -167,10 +167,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4005e8265e8b5ca489ac4bac1441dcaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recipies:
+  recipes:
+  - {fileID: 11400000, guid: 6f05c4bac11e9eb469bad56f73ad14c9, type: 2}
   - {fileID: 11400000, guid: 6e9b60feafd8e3147a19ca218365737e, type: 2}
   - {fileID: 11400000, guid: 5ac9914bd24e1ab44b265203bbc7b781, type: 2}
-  - {fileID: 11400000, guid: 6f05c4bac11e9eb469bad56f73ad14c9, type: 2}
   cardItemsByColor:
     _serializedList:
     - Key: {r: 0, g: 0, b: 0, a: 0}
