@@ -33,6 +33,12 @@ public class PlayerActionsManager: MonoBehaviour
 
     private void HandlePrimaryButtonInput(InputAction.CallbackContext obj)
     {
+        if (level.Executor.IsExecuting)
+        {
+            Debug.LogError("nonono mr fish");
+            return;
+        }
+
         if(selectedCard == null)
         {
             selectedCard = level.LastHoveredTargetContainer.LastHoveredTarget as Card;
@@ -46,7 +52,7 @@ public class PlayerActionsManager: MonoBehaviour
         var cardSlot = level.LastHoveredTargetContainer.LastHoveredTarget as CardSlot;
         if (cardSlot != null)
         {
-            selectedCard.Move(cardSlot);
+            selectedCard.EnqueueMove(cardSlot);
             SetSelectedCard(null);
             return;
         }
@@ -54,7 +60,7 @@ public class PlayerActionsManager: MonoBehaviour
         var card = level.LastHoveredTargetContainer.LastHoveredTarget as Card;
         if (card != null)
         {
-            selectedCard.Attack(card);
+            selectedCard.EnqueueInteract(card);
             SetSelectedCard(null);
             return;
         }

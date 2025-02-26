@@ -1,5 +1,6 @@
 using AYellowpaper.SerializedCollections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class RecipeCrafter : MonoBehaviour
@@ -67,20 +68,14 @@ public class RecipeCrafter : MonoBehaviour
 
     private async void ExecuteRecepe(List<Card> involvedCards, CardSlot targetSlot, Recipe recipe)
     {
-        print($"{recipe.name} is crafted successfully into {targetSlot.name}! The result is {recipe.ResultItem.name}");
-
+        List<Task> animationTasks = new List<Task>();
         foreach (Card card in involvedCards)
         {
-            await card.InteractAnimation(targetSlot.transform.position);
+            animationTasks.Add(card.EnqueueExecuteRecipe(targetSlot.transform.position));
         }
-
-        while(involvedCards.Count > 0)
-        {
-            var removedCard = involvedCards[0];
-            involvedCards.Remove(removedCard);
-            Destroy(removedCard.gameObject);
-        }
+        await Task.WhenAll(animationTasks);
 
         battleField.SpawnCard(recipe.ResultItem, targetSlot);
+        print($"{recipe.name} is crafted successfully into {targetSlot.name}! The result is {recipe.ResultItem.name}");
     }
 }

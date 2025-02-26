@@ -75,7 +75,12 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         transform.localScale = Vector3.one;
     }
 
-    public async Task Move(CardSlot targetCardSlot)
+    public void EnqueueMove(CardSlot targetCardSlot)
+    {
+        level.Executor.EnqueueAnimation(() => PerformMove(targetCardSlot));
+    }
+
+    public async Task PerformMove(CardSlot targetCardSlot)
     {
         if (cardSlot != null)
         {
@@ -83,13 +88,31 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             cardSlot = null;
         }
 
-        transform.DOMove(targetCardSlot.transform.position, movementTime).SetEase(Ease.InQuad);
-        transform.DOScale(targetCardSlot.transform.localScale, movementTime).SetEase(Ease.InQuad);
-        await Task.Delay((int)(movementTime * 1000));
+        await MovementAnimation(targetCardSlot.transform.position);
 
-        transform.position = targetCardSlot.transform.position;
         cardSlot = targetCardSlot;
         targetCardSlot.SetCard(this);
+    }
+
+    public async Task EnqueueInteract(Card targetCard)
+    {
+        await level.Executor.EnqueueAnimation(() => Interact(targetCard));
+    }
+
+    public async Task Interact(Card targetCard)
+    {
+        await InteractAnimation(targetCard.transform.position);
+
+        charges--;
+        targetCard.power -= power;
+
+        if (charges <= 0)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        await MovementAnimation(cardSlot.transform.position);
     }
 
     public async Task InteractAnimation(Vector3 position)
@@ -98,7 +121,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
         transform.DORotate(new Vector3(0, 0, angle - 90), movementTime * 0.5f).SetEase(Ease.InQuad);
-        transform.DOScale(Vector3.one * 0.5f, movementTime).SetEase(Ease.InQuad);
+        transform.DOScale(Vector3.one * 0.25f, movementTime).SetEase(Ease.InQuad);
         await transform.DOMove(position, movementTime).SetEase(Ease.InQuad).AsyncWaitForCompletion();
     }
 
@@ -109,13 +132,17 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         await transform.DOMove(position, movementTime).SetEase(Ease.InQuad).AsyncWaitForCompletion();
     }
 
-    public async Task Attack(Card targetCard)
+    public async Task EnqueueExecuteRecipe(Vector3 position)
     {
-        await InteractAnimation(targetCard.transform.position);
+        var tcs = new TaskCompletionSource<bool>();
 
-        charges--;
-        targetCard.power -= power;
+        await level.Executor.EnqueueAnimation(async () =>
+        {
+            await InteractAnimation(position);
+            Destroy(gameObject);
+            tcs.SetResult(true);
+        });
 
-        await MovementAnimation(cardSlot.transform.position);
+        await tcs.Task;
     }
 }
