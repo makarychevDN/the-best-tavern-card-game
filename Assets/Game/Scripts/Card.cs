@@ -127,6 +127,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public async Task AnimateMovement(Vector3 position)
     {
+        transform.SetAsLastSibling();
         transform.DORotate(new Vector3(0, 0, 0), movementTime);
         transform.DOScale(Vector3.one, movementTime).SetEase(Ease.InQuad);
         await transform.DOMove(position, movementTime).SetEase(Ease.InQuad).AsyncWaitForCompletion();
