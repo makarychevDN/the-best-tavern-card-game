@@ -75,12 +75,12 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         transform.localScale = Vector3.one;
     }
 
-    public void EnqueueMove(CardSlot targetCardSlot)
+    public async Task EnqueueMove(CardSlot targetCardSlot)
     {
-        level.Executor.EnqueueAnimation(() => PerformMove(targetCardSlot));
+        await level.Executor.EnqueueAnimation(() => PerformAnimatedMove(targetCardSlot));
     }
 
-    public async Task PerformMove(CardSlot targetCardSlot)
+    public async Task PerformAnimatedMove(CardSlot targetCardSlot)
     {
         if (cardSlot != null)
         {
@@ -88,7 +88,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             cardSlot = null;
         }
 
-        await MovementAnimation(targetCardSlot.transform.position);
+        await AnimateMovement(targetCardSlot.transform.position);
 
         cardSlot = targetCardSlot;
         targetCardSlot.SetCard(this);
@@ -96,12 +96,12 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public async Task EnqueueInteract(Card targetCard)
     {
-        await level.Executor.EnqueueAnimation(() => Interact(targetCard));
+        await level.Executor.EnqueueAnimation(() => PerformAnimatedInteraction(targetCard));
     }
 
-    public async Task Interact(Card targetCard)
+    public async Task PerformAnimatedInteraction(Card targetCard)
     {
-        await InteractAnimation(targetCard.transform.position);
+        await AnimateInteraction(targetCard.transform.position);
 
         charges--;
         targetCard.power -= power;
@@ -112,10 +112,10 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             return;
         }
 
-        await MovementAnimation(cardSlot.transform.position);
+        await AnimateMovement(cardSlot.transform.position);
     }
 
-    public async Task InteractAnimation(Vector3 position)
+    public async Task AnimateInteraction(Vector3 position)
     {
         Vector3 direction = position - transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
@@ -125,7 +125,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         await transform.DOMove(position, movementTime).SetEase(Ease.InQuad).AsyncWaitForCompletion();
     }
 
-    public async Task MovementAnimation(Vector3 position)
+    public async Task AnimateMovement(Vector3 position)
     {
         transform.DORotate(new Vector3(0, 0, 0), movementTime);
         transform.DOScale(Vector3.one, movementTime).SetEase(Ease.InQuad);
@@ -138,7 +138,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
         await level.Executor.EnqueueAnimation(async () =>
         {
-            await InteractAnimation(position);
+            await AnimateInteraction(position);
             Destroy(gameObject);
             tcs.SetResult(true);
         });
