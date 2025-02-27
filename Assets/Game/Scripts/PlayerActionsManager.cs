@@ -35,7 +35,6 @@ public class PlayerActionsManager: MonoBehaviour
     {
         if (level.Executor.IsExecuting)
         {
-            Debug.LogError("nonono mr fish");
             return;
         }
 
