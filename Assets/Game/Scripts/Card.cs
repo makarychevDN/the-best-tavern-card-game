@@ -118,18 +118,20 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public async Task AnimateInteraction(Vector3 position)
     {
         Vector3 direction = position - transform.position;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-
-        transform.DORotate(new Vector3(0, 0, angle - 90), movementTime * 0.5f).SetEase(Ease.InQuad);
-        transform.DOScale(Vector3.one * 0.25f, movementTime).SetEase(Ease.InQuad);
-        await transform.DOMove(position, movementTime).SetEase(Ease.InQuad).AsyncWaitForCompletion();
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90;
+        await (AnimateMovement(position, Vector3.one * 0.25f, angle, 0.5f));
     }
 
     public async Task AnimateMovement(Vector3 position)
     {
+        await AnimateMovement(position, Vector3.one);
+    }
+
+    public async Task AnimateMovement(Vector3 position, Vector3 scale, float angle = 0, float rotationSpeedModificator = 1)
+    {
         transform.SetAsLastSibling();
-        transform.DORotate(new Vector3(0, 0, 0), movementTime);
-        transform.DOScale(Vector3.one, movementTime).SetEase(Ease.InQuad);
+        transform.DORotate(new Vector3(0, 0, angle), movementTime * rotationSpeedModificator).SetEase(Ease.InQuad);
+        transform.DOScale(scale, movementTime).SetEase(Ease.InQuad);
         await transform.DOMove(position, movementTime).SetEase(Ease.InQuad).AsyncWaitForCompletion();
     }
 
