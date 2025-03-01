@@ -10,6 +10,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     [SerializeField] private CardItem cardItem;
     [SerializeField] private CardSlot cardSlot;
     [SerializeField] private float movementTime;
+    [SerializeField] private int actionCost;
     [Header("UI Refs")]
     [SerializeField] private GameObject highlight;
     [SerializeField] private Image itemImage;
@@ -22,6 +23,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     private Level level;
 
     public CardItem CardItem => cardItem;
+    public int ActionCost => actionCost;
 
     public void Init(Level level)
     {
@@ -45,6 +47,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
         power = cardItem.Power;
         charges = cardItem.Charges;
+        actionCost = cardItem.ActionCost;
     }
 
     public void OnPointerEnter(PointerEventData eventData) => Hover();
@@ -75,12 +78,29 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         transform.localScale = Vector3.one;
     }
 
-    public async Task EnqueueMove(CardSlot targetCardSlot)
+    public async Task EnqueueAction(MonoBehaviour target)
     {
-        await level.Executor.EnqueueAnimation(() => PerformAnimatedMove(targetCardSlot));
+        if (target is CardSlot cardSlot)
+        {
+            await EnqueueMove(cardSlot);
+        }
+        else if (target is Card card)
+        {
+            await EnqueueInteract(card);
+        }
     }
 
-    public async Task PerformAnimatedMove(CardSlot targetCardSlot)
+    public async Task EnqueueMove(CardSlot targetCardSlot)
+    {
+        await level.Executor.EnqueueAnimation(() => PerformMove(targetCardSlot));
+    }
+
+    public async Task EnqueueInteract(Card targetCard)
+    {
+        await level.Executor.EnqueueAnimation(() => PerformInteract(targetCard));
+    }
+
+    public async Task PerformMove(CardSlot targetCardSlot)
     {
         if (cardSlot != null)
         {
@@ -94,12 +114,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         targetCardSlot.SetCard(this);
     }
 
-    public async Task EnqueueInteract(Card targetCard)
-    {
-        await level.Executor.EnqueueAnimation(() => PerformAnimatedInteraction(targetCard));
-    }
-
-    public async Task PerformAnimatedInteraction(Card targetCard)
+    public async Task PerformInteract(Card targetCard)
     {
         await AnimateInteraction(targetCard.transform.position);
 

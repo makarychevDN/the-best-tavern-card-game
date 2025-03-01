@@ -1,11 +1,17 @@
-using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerActionsManager: MonoBehaviour
 {
+    [SerializeField] private int currentActionsCounter;
+    [SerializeField] private int maxActionsCounterPerTurn;
+    [SerializeField] private PlayableCharacter character;
+    [SerializeField] private List<CardItem> deck;
+    [Header("Selected Cards Setuo")]
     [SerializeField] private Card selectedCard;
     [SerializeField] private GameObject targetSelectorArrow;
+    [Header("Key References Setup")]
     [SerializeField] private InputActionReference primaryButton;
     [SerializeField] private InputActionReference secondaryButton;
     private Level level;
@@ -21,9 +27,19 @@ public class PlayerActionsManager: MonoBehaviour
         DrawArrow();
     }
 
+    public void Init(Level level, PlayableCharacter character)
+    {
+        this.level = level;
+        this.character = character;
+        currentActionsCounter = 0;
+        maxActionsCounterPerTurn = character.Speed;
+    }
+
     public void Init(Level level)
     {
         this.level = level;
+        currentActionsCounter = 0;
+        maxActionsCounterPerTurn = character.Speed;
     }
 
     public void SetSelectedCard(Card card)
@@ -48,20 +64,24 @@ public class PlayerActionsManager: MonoBehaviour
             return;
         }
 
-        var cardSlot = level.LastHoveredTargetContainer.LastHoveredTarget as CardSlot;
-        if (cardSlot != null)
+        var target = level.LastHoveredTargetContainer.LastHoveredTarget;
+        if(level.LastHoveredTargetContainer.LastHoveredTarget != null)
         {
-            selectedCard.EnqueueMove(cardSlot);
+            IncreaseActionsCounter(selectedCard.ActionCost);
+            selectedCard.EnqueueAction(target);
             SetSelectedCard(null);
             return;
         }
+    }
 
-        var card = level.LastHoveredTargetContainer.LastHoveredTarget as Card;
-        if (card != null)
+    private void IncreaseActionsCounter(int value)
+    {
+        currentActionsCounter += value;
+
+        if(currentActionsCounter >= maxActionsCounterPerTurn)
         {
-            selectedCard.EnqueueInteract(card);
-            SetSelectedCard(null);
-            return;
+            currentActionsCounter -= maxActionsCounterPerTurn;
+            print("next turn!");
         }
     }
 
