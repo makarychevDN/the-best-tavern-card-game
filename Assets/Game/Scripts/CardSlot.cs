@@ -11,12 +11,17 @@ public class CardSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public Card Card => card;
 
+    public bool IsEmpty => card == null;
+
     public void SetCard(Card card)
     {
         this.card = card;
 
         if (card != null)
+        {
             OnSlotFilled.Invoke(this);
+            card.transform.SetParent(transform);
+        }
     }
 
     public void Init(Level level)

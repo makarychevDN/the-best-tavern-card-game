@@ -1,8 +1,8 @@
+using System.Linq;
 using UnityEngine;
 
 public class BattleField : MonoBehaviour
 {
-    [SerializeField] private Card cardPrefab;
     [SerializeField] private CardSlot cardSlotPrefab;
     [SerializeField] private RecipeCrafter cecipeCrafter;
     [SerializeField] private Transform cardSlotsParent;
@@ -12,6 +12,7 @@ public class BattleField : MonoBehaviour
     private Level level;
 
     public CardSlot[,] CardSlots => cardSlots;
+    public Level Level => level;
 
     public void Init(Level level)
     {
@@ -30,10 +31,9 @@ public class BattleField : MonoBehaviour
         cecipeCrafter.Init(this);
     }
 
-    public void SpawnCard(CardItem cardItem, CardSlot slot)
+    public CardSlot GetRandomEmptySlot()
     {
-        var card = Instantiate(cardPrefab, transform);
-        card.transform.position = slot.transform.position;
-        card.Init(level, cardItem);
+        var allValues = cardSlots.Cast<CardSlot>();
+        return allValues.First(slot => slot.IsEmpty);
     }
 }

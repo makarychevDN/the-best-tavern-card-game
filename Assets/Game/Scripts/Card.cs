@@ -25,6 +25,8 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public CardItem CardItem => cardItem;
     public int ActionCost => actionCost;
 
+    public void SetSlot(CardSlot slot) => cardSlot = slot;
+
     public void Init(Level level)
     {
         this.level = level;

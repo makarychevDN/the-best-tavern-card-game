@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class PlayerActionsManager: MonoBehaviour
@@ -15,6 +16,8 @@ public class PlayerActionsManager: MonoBehaviour
     [SerializeField] private InputActionReference primaryButton;
     [SerializeField] private InputActionReference secondaryButton;
     private Level level;
+
+    public UnityEvent OnTurnEnded;
 
     private void Awake()
     {
@@ -81,6 +84,7 @@ public class PlayerActionsManager: MonoBehaviour
         if(currentActionsCounter >= maxActionsCounterPerTurn)
         {
             currentActionsCounter -= maxActionsCounterPerTurn;
+            OnTurnEnded.Invoke();
             print("next turn!");
         }
     }

@@ -75,7 +75,7 @@ public class RecipeCrafter : MonoBehaviour
         }
         await Task.WhenAll(animationTasks);
 
-        battleField.SpawnCard(recipe.ResultItem, targetSlot);
+        battleField.Level.SpawnCard(recipe.ResultItem, targetSlot);
         print($"{recipe.name} is crafted successfully into {targetSlot.name}! The result is {recipe.ResultItem.name}");
     }
 }
