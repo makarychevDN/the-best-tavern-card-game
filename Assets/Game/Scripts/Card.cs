@@ -73,11 +73,13 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public void Select()
     {
         transform.localScale = Vector3.one * 2f;
+        transform.parent = level.SelectedCardParent;
     }
 
     public void Unselect()
     {
         transform.localScale = Vector3.one;
+        transform.parent = level.CardsParent;
     }
 
     public async Task EnqueueAction(MonoBehaviour target)
@@ -146,10 +148,10 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public async Task AnimateMovement(Vector3 position, Vector3 scale, float angle = 0, float rotationSpeedModificator = 1)
     {
-        transform.SetAsLastSibling();
         transform.DORotate(new Vector3(0, 0, angle), movementTime * rotationSpeedModificator).SetEase(Ease.InQuad);
         transform.DOScale(scale, movementTime).SetEase(Ease.InQuad);
         await transform.DOMove(position, movementTime).SetEase(Ease.InQuad).AsyncWaitForCompletion();
+        transform.parent = level.CardsParent;
     }
 
     public async Task EnqueueExecuteRecipe(Vector3 position)

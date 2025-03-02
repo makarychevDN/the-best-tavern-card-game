@@ -179,6 +179,41 @@ MonoBehaviour:
       Value: {fileID: 11400000, guid: 2700677394733de469281f8c45174ce5, type: 2}
     - Key: {r: 1, g: 0.5019608, b: 0, a: 1}
       Value: {fileID: 11400000, guid: 74b13f9a288b9a8488ae1806ecd89427, type: 2}
+--- !u!1 &186954689
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 186954690}
+  m_Layer: 5
+  m_Name: SelectedCard
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &186954690
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 186954689}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1365599397}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &379016047
 GameObject:
   m_ObjectHideFlags: 0
@@ -859,8 +894,10 @@ RectTransform:
   m_Children:
   - {fileID: 1313065426}
   - {fileID: 1784037320}
-  - {fileID: 1706315086}
   - {fileID: 1249045939}
+  - {fileID: 1685595942}
+  - {fileID: 1706315086}
+  - {fileID: 186954690}
   m_Father: {fileID: 782953515}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -880,21 +917,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e668025470ddcc84897ffd08ce72cd95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnedCustomerCardsPerTurnCount: 4
-  spawnedProductCardsPerTurnCount: 4
+  spawnedCustomerCardsPerTurnCount: 3
+  spawnedProductCardsPerTurnCount: 5
   lastHoveredTargetContainer: {fileID: 1249045940}
   playerInput: {fileID: 1706315087}
   battleField: {fileID: 1784037322}
   executor: {fileID: 1365599399}
   spawnedCardSlotsParent: {fileID: 1313065426}
+  cardsParent: {fileID: 1685595942}
+  selectedCardParent: {fileID: 186954690}
   levelSetup: {fileID: 11400000, guid: cae18e59a58b9a24b957c7a340f83a44, type: 2}
   customersDeck: []
   productsDeck: []
   cardSlotPrefab: {fileID: 4341146166876576018, guid: 281d0d23b3934bc419a216d8c42f4d91, type: 3}
-  cardSlotsToSpawnCards: []
-  spawnedCards: []
+  customerCardSlotsToSpawnCards: []
+  productCardSlotsToSpawnCards: []
+  cards: []
   cardPrefab: {fileID: 4831155972395961157, guid: 8b1707b10dc0169489bc2ef113379330, type: 3}
-  lemon: {fileID: 11400000, guid: 2700677394733de469281f8c45174ce5, type: 2}
 --- !u!114 &1365599399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -907,6 +946,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a95fed4ef2d20a4db505e05266abb7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1685595941
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1685595942}
+  m_Layer: 5
+  m_Name: Cards
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1685595942
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1685595941}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1365599397}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1706315085
 GameObject:
   m_ObjectHideFlags: 0

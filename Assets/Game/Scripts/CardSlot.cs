@@ -20,7 +20,6 @@ public class CardSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         if (card != null)
         {
             OnSlotFilled.Invoke(this);
-            card.transform.SetParent(transform);
         }
     }
 

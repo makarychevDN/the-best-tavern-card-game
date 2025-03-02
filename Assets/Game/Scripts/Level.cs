@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
-using static Unity.VisualScripting.Member;
 
 public class Level : MonoBehaviour
 {
@@ -16,6 +15,8 @@ public class Level : MonoBehaviour
     [SerializeField] private AnimatedActionsExecutor executor;
     [Header("Spawn Cards System")]
     [SerializeField] private Transform spawnedCardSlotsParent;
+    [SerializeField] private Transform cardsParent;
+    [SerializeField] private Transform selectedCardParent;
     [SerializeField] private LevelSetup levelSetup;
     [SerializeField] private List<CardItem> customersDeck;
     [SerializeField] private List<CardItem> productsDeck;
@@ -28,6 +29,8 @@ public class Level : MonoBehaviour
     public LastHoveredTargetContainer LastHoveredTargetContainer => lastHoveredTargetContainer;
     public PlayerActionsManager PlayerInput => playerInput;
     public AnimatedActionsExecutor Executor => executor;
+    public Transform CardsParent => cardsParent;
+    public Transform SelectedCardParent => selectedCardParent;
 
     private async void Awake()
     {
