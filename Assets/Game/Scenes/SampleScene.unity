@@ -798,7 +798,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -688, y: 587}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1313065427
@@ -810,7 +810,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1313065425}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
@@ -880,13 +880,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e668025470ddcc84897ffd08ce72cd95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnedCardsPerTurnCount: 8
   spawnedCustomerCardsPerTurnCount: 4
+  spawnedProductCardsPerTurnCount: 4
   lastHoveredTargetContainer: {fileID: 1249045940}
   playerInput: {fileID: 1706315087}
   battleField: {fileID: 1784037322}
   executor: {fileID: 1365599399}
   spawnedCardSlotsParent: {fileID: 1313065426}
+  levelSetup: {fileID: 11400000, guid: cae18e59a58b9a24b957c7a340f83a44, type: 2}
+  customersDeck: []
+  productsDeck: []
   cardSlotPrefab: {fileID: 4341146166876576018, guid: 281d0d23b3934bc419a216d8c42f4d91, type: 3}
   cardSlotsToSpawnCards: []
   spawnedCards: []
@@ -956,7 +959,9 @@ MonoBehaviour:
   currentActionsCounter: 0
   maxActionsCounterPerTurn: 0
   character: {fileID: 11400000, guid: aac36c3a47be42742a91e67074b490df, type: 2}
-  deck: []
+  productsDeck:
+  - {fileID: 11400000, guid: 2700677394733de469281f8c45174ce5, type: 2}
+  - {fileID: 11400000, guid: 74b13f9a288b9a8488ae1806ecd89427, type: 2}
   selectedCard: {fileID: 0}
   targetSelectorArrow: {fileID: 1240143273}
   primaryButton: {fileID: 1120369429361536294, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

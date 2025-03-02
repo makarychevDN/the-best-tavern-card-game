@@ -8,7 +8,7 @@ public class PlayerActionsManager: MonoBehaviour
     [SerializeField] private int currentActionsCounter;
     [SerializeField] private int maxActionsCounterPerTurn;
     [SerializeField] private PlayableCharacter character;
-    [SerializeField] private List<CardItem> deck;
+    [SerializeField] private List<CardItem> productsDeck;
     [Header("Selected Cards Setuo")]
     [SerializeField] private Card selectedCard;
     [SerializeField] private GameObject targetSelectorArrow;
@@ -18,6 +18,8 @@ public class PlayerActionsManager: MonoBehaviour
     private Level level;
 
     public UnityEvent OnTurnEnded;
+
+    public List<CardItem> ProductesDeck => productsDeck;
 
     private void Awake()
     {
