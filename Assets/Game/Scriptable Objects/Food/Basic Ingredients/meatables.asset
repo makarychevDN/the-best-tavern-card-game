@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83a113554bd8bc94988d0141b10af540, type: 3}
+  m_Name: meatables
+  m_EditorClassIdentifier: 
+  image: {fileID: 21300000, guid: 23fcbaa6986b8024aa163b4bb9f406c4, type: 3}
+  itemName: "\u041C\u044F\u0441\u043E\u0432\u043E\u0449\u0438"
+  power: 0
+  charges: 0
+  actionCost: 1
+  spicy: 0
+  sour: 0
+  sweet: 0
+  fancy: 0

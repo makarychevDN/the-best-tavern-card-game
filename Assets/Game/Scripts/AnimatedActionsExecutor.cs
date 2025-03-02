@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using System.Threading.Tasks;
-using System.Collections;
 
 public class AnimatedActionsExecutor : MonoBehaviour
 {

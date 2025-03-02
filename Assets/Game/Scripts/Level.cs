@@ -93,7 +93,6 @@ public class Level : MonoBehaviour
             if (deck.Count == 0)
                 RefreshDeck(deck, sourceDeck);
 
-            print(deck.Count == 0);
             spawnedCards.Add(SpawnCard(deck[0], cardSlots[i]));
             deck.RemoveAt(0);
         }
@@ -117,7 +116,7 @@ public class Level : MonoBehaviour
 
     public Card SpawnCard(CardItem cardItem, CardSlot slot)
     {
-        var card = Instantiate(cardPrefab, transform);
+        var card = Instantiate(cardPrefab, cardsParent);
         card.transform.position = slot.transform.position;
         slot.SetCard(card);
         card.SetSlot(slot);
