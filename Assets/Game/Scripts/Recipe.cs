@@ -5,9 +5,9 @@ using UnityEngine;
 public class Recipe : ScriptableObject
 {
     [SerializeField] private CardItem resultItem;
-    [SerializeField] private Texture2D recipeImage;
+    [SerializeField] private List<Texture2D> recipeImages;
 
-    public Texture2D RecipeImage => recipeImage;
+    public List<Texture2D> RecipeImages => recipeImages;
 
     public CardItem ResultItem => resultItem;
 }

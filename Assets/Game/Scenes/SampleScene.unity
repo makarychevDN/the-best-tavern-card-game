@@ -1037,8 +1037,8 @@ MonoBehaviour:
   productsDeck:
   - {fileID: 11400000, guid: 74b13f9a288b9a8488ae1806ecd89427, type: 2}
   - {fileID: 11400000, guid: 74b13f9a288b9a8488ae1806ecd89427, type: 2}
-  - {fileID: 11400000, guid: 5c9f6216ae2507e448819f582a774fbe, type: 2}
-  - {fileID: 11400000, guid: 5c9f6216ae2507e448819f582a774fbe, type: 2}
+  - {fileID: 11400000, guid: 2700677394733de469281f8c45174ce5, type: 2}
+  - {fileID: 11400000, guid: 2700677394733de469281f8c45174ce5, type: 2}
   selectedCard: {fileID: 0}
   targetSelectorArrow: {fileID: 1240143273}
   primaryButton: {fileID: 1120369429361536294, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

@@ -36,34 +36,37 @@ public class RecipeCrafter : MonoBehaviour
 
     private void TryToExecuteRecipe(Recipe recipe, CardSlot targetSlot, int x, int y)
     {
-        if (battleField.CardSlots.GetLength(0) - x < recipe.RecipeImage.width)
-            return;
-
-        if (battleField.CardSlots.GetLength(1) - y < recipe.RecipeImage.height)
-            return;
-
-        List<Card> cards = new List<Card>();
-
-        for (int i = 0; i < recipe.RecipeImage.width; i++)
+        foreach (var recipeTexture in recipe.RecipeImages)
         {
-            for (int j = 0; j < recipe.RecipeImage.height; j++)
+            if (battleField.CardSlots.GetLength(0) - x < recipeTexture.width)
+                return;
+
+            if (battleField.CardSlots.GetLength(1) - y < recipeTexture.height)
+                return;
+
+            List<Card> cards = new List<Card>();
+
+            for (int i = 0; i < recipeTexture.width; i++)
             {
-                if (recipe.RecipeImage.GetPixel(i, j).a == 0)
-                    continue;
-
-                var card = battleField.CardSlots[i + x, j + y].Card;
-                var expectedItem = cardItemsByColor[recipe.RecipeImage.GetPixel(i, j)];
-
-                if (card == null || expectedItem != battleField.CardSlots[i + x, j + y].Card.CardItem)
+                for (int j = 0; j < recipeTexture.height; j++)
                 {
-                    return;
+                    if (recipeTexture.GetPixel(i, j).a == 0)
+                        continue;
+
+                    var card = battleField.CardSlots[i + x, j + y].Card;
+                    var expectedItem = cardItemsByColor[recipeTexture.GetPixel(i, j)];
+
+                    if (card == null || expectedItem != battleField.CardSlots[i + x, j + y].Card.CardItem)
+                    {
+                        return;
+                    }
+
+                    cards.Add(card);
                 }
-
-                cards.Add(card);
             }
-        }
 
-        ExecuteRecipe(cards, targetSlot, recipe);
+            ExecuteRecipe(cards, targetSlot, recipe);
+        }
     }
 
     private async void ExecuteRecipe(List<Card> involvedCards, CardSlot targetSlot, Recipe recipe)
