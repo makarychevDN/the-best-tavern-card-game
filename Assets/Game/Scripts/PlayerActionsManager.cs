@@ -72,8 +72,8 @@ public class PlayerActionsManager: MonoBehaviour
         var target = level.LastHoveredTargetContainer.LastHoveredTarget;
         if(level.LastHoveredTargetContainer.LastHoveredTarget != null)
         {
-            IncreaseActionsCounter(selectedCard.ActionCost);
             selectedCard.EnqueueAction(target);
+            IncreaseActionsCounter(selectedCard.ActionCost);
             SetSelectedCard(null);
             return;
         }
@@ -86,9 +86,15 @@ public class PlayerActionsManager: MonoBehaviour
         if(currentActionsCounter >= maxActionsCounterPerTurn)
         {
             currentActionsCounter -= maxActionsCounterPerTurn;
-            OnTurnEnded.Invoke();
-            print("next turn!");
+            WaitForAnimationsAndEndTurn();
         }
+    }
+
+    private async void WaitForAnimationsAndEndTurn()
+    {
+        await level.Executor.WaitForCompletion();
+        OnTurnEnded?.Invoke();
+        print("next turn!");
     }
 
     private void HandleSecondaryButtonInput(InputAction.CallbackContext obj)
