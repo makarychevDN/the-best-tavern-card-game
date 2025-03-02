@@ -34,6 +34,6 @@ public class BattleField : MonoBehaviour
     public CardSlot GetRandomEmptySlot()
     {
         var allValues = cardSlots.Cast<CardSlot>();
-        return allValues.First(slot => slot.IsEmpty);
+        return allValues.Where(slot => slot.IsEmpty).ToList().GetRandomElement();
     }
 }

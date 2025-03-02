@@ -210,10 +210,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1784037320}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 190, y: -172.5}
-  m_SizeDelta: {x: 540, y: 735}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1030, y: 1270}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &379016049
 MonoBehaviour:
@@ -1017,8 +1017,8 @@ MonoBehaviour:
   cardSlotPrefab: {fileID: 4341146166876576018, guid: 281d0d23b3934bc419a216d8c42f4d91, type: 3}
   cecipeCrafter: {fileID: 16504374}
   cardSlotsParent: {fileID: 379016048}
-  width: 4
-  height: 4
+  width: 8
+  height: 8
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -33,6 +33,7 @@ public class Level : MonoBehaviour
         playerInput.OnTurnEnded.AddListener(OnTurnEndedHandler);
 
         SpawnCardSlotsToSpawnedCards(spawnedCardSlotsParent);
+        await Task.Delay(1000);
         await ExecuteWaveOfCards();
     }
 
