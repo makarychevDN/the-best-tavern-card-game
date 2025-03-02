@@ -6,10 +6,9 @@ using UnityEngine;
 public class RecipeCrafter : MonoBehaviour
 {
     [SerializeField] private List<Recipe> recipes;
+    [SerializeField] private ColorToCardItemDictionary cardItemsByColorDictionary;
     private BattleField battleField;
 
-    [SerializedDictionary("Color", "CardItem")]
-    public SerializedDictionary<Color, CardItem> cardItemsByColor;
 
     public void Init(BattleField battleField)
     {
@@ -54,7 +53,7 @@ public class RecipeCrafter : MonoBehaviour
                         continue;
 
                     var card = battleField.CardSlots[i + x, j + y].Card;
-                    var expectedItem = cardItemsByColor[recipeTexture.GetPixel(i, j)];
+                    var expectedItem = cardItemsByColorDictionary.CardItemsByColor[recipeTexture.GetPixel(i, j)];
 
                     if (card == null || expectedItem != battleField.CardSlots[i + x, j + y].Card.CardItem)
                     {

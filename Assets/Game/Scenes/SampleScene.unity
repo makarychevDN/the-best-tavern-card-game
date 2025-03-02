@@ -171,14 +171,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6f05c4bac11e9eb469bad56f73ad14c9, type: 2}
   - {fileID: 11400000, guid: 6e9b60feafd8e3147a19ca218365737e, type: 2}
   - {fileID: 11400000, guid: 5ac9914bd24e1ab44b265203bbc7b781, type: 2}
-  cardItemsByColor:
-    _serializedList:
-    - Key: {r: 0, g: 0, b: 0, a: 0}
-      Value: {fileID: 0}
-    - Key: {r: 1, g: 1, b: 0, a: 1}
-      Value: {fileID: 11400000, guid: 2700677394733de469281f8c45174ce5, type: 2}
-    - Key: {r: 1, g: 0.5019608, b: 0, a: 1}
-      Value: {fileID: 11400000, guid: 74b13f9a288b9a8488ae1806ecd89427, type: 2}
+  cardItemsByColorDictionary: {fileID: 11400000, guid: 2bccdb269bf01fd4482c22e10afad54e, type: 2}
 --- !u!1 &186954689
 GameObject:
   m_ObjectHideFlags: 0

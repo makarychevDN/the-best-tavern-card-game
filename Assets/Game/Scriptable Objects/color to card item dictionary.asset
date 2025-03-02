@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12392c8ea36a2414f9876b4da30c2594, type: 3}
+  m_Name: color to card item dictionary
+  m_EditorClassIdentifier: 
+  cardItemsByColor:
+    _serializedList:
+    - Key: {r: 0.5019608, g: 0, b: 0, a: 1}
+      Value: {fileID: 11400000, guid: c40fc8e99437c7140980b7fd1a8fa322, type: 2}
+    - Key: {r: 0.7529412, g: 0, b: 0, a: 1}
+      Value: {fileID: 11400000, guid: 5c9f6216ae2507e448819f582a774fbe, type: 2}
+    - Key: {r: 1, g: 0, b: 0, a: 1}
+      Value: {fileID: 11400000, guid: a1fa3e2354dbc24448e418f05b182756, type: 2}
+    - Key: {r: 1, g: 0.5019608, b: 0, a: 1}
+      Value: {fileID: 11400000, guid: 74b13f9a288b9a8488ae1806ecd89427, type: 2}
+    - Key: {r: 1, g: 1, b: 0, a: 1}
+      Value: {fileID: 11400000, guid: 2700677394733de469281f8c45174ce5, type: 2}
+    - Key: {r: 0, g: 1, b: 0, a: 1}
+      Value: {fileID: 11400000, guid: 394fb23b1a849674a9f079676611ba42, type: 2}
+    - Key: {r: 0, g: 1, b: 1, a: 1}
+      Value: {fileID: 11400000, guid: 8db5d3572a443b6469cad03a595e3489, type: 2}
+    - Key: {r: 1, g: 1, b: 1, a: 1}
+      Value: {fileID: 11400000, guid: 7bdbfc3c5b756b149b111eb803c25629, type: 2}
