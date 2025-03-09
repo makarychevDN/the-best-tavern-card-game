@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: cross recipe
   m_EditorClassIdentifier: 
   resultItem: {fileID: 11400000, guid: 4699e338d0896af41a95a4a32acebe3a, type: 2}
-  recipeImage: {fileID: 2800000, guid: 1d92bcfb950837f488b171d53f6b9dec, type: 3}
+  recipeImages:
+  - {fileID: 2800000, guid: 1d92bcfb950837f488b171d53f6b9dec, type: 3}
